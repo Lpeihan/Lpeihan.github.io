@@ -5,13 +5,17 @@
   
   <title>mongodb索引 | Lpeihan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="索引索引的基本作用：搜索 + 排序 创建索引1db.test.ensureIndex(&amp;#123; a: 1, b: 1, c: 1&amp;#125;); 查询索引1db.getCollection(&amp;apos;test&amp;apos;).getIndexes(); 索引前缀  1234567db.test.createIndex(&amp;#123; a: 1, b: 1, c: 1 &amp;#125;)以上所有的前缀">
+<meta name="keywords" content="mongodb">
+<meta property="og:type" content="article">
 <meta property="og:title" content="mongodb索引">
 <meta property="og:url" content="http://lpeihan.top/2017/09/04/mongodb索引/index.html">
 <meta property="og:site_name" content="Lpeihan&#39;s blog">
-<meta property="og:updated_time" content="2017-09-04T15:11:38.358Z">
+<meta property="og:description" content="索引索引的基本作用：搜索 + 排序 创建索引1db.test.ensureIndex(&amp;#123; a: 1, b: 1, c: 1&amp;#125;); 查询索引1db.getCollection(&amp;apos;test&amp;apos;).getIndexes(); 索引前缀  1234567db.test.createIndex(&amp;#123; a: 1, b: 1, c: 1 &amp;#125;)以上所有的前缀">
+<meta property="og:updated_time" content="2017-09-04T15:12:26.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb索引">
+<meta name="twitter:description" content="索引索引的基本作用：搜索 + 排序 创建索引1db.test.ensureIndex(&amp;#123; a: 1, b: 1, c: 1&amp;#125;); 查询索引1db.getCollection(&amp;apos;test&amp;apos;).getIndexes(); 索引前缀  1234567db.test.createIndex(&amp;#123; a: 1, b: 1, c: 1 &amp;#125;)以上所有的前缀">
   
     <link rel="alternate" href="/atom.xml" title="Lpeihan&#39;s blog" type="application/atom+xml">
   
@@ -82,13 +86,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>索引的基本作用：搜索 + 排序</p>
+<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.test.ensureIndex(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">1</span>, <span class="attr">c</span>: <span class="number">1</span>&#125;);</div></pre></td></tr></table></figure>
+<h3 id="查询索引"><a href="#查询索引" class="headerlink" title="查询索引"></a>查询索引</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.getCollection(&apos;test&apos;).getIndexes();</div></pre></td></tr></table></figure>
+<h3 id="索引前缀"><a href="#索引前缀" class="headerlink" title="索引前缀"></a>索引前缀</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.test.createIndex(&#123; a: 1, b: 1, c: 1 &#125;)</div><div class="line"></div><div class="line">以上所有的前缀包括：</div><div class="line"></div><div class="line">&#123; a: 1 &#125;</div><div class="line">&#123; a: 1, b: 1 &#125;</div><div class="line">&#123; a: 1, b: 1, c: 1 &#125;</div></pre></td></tr></table></figure>
+<h3 id="过滤性"><a href="#过滤性" class="headerlink" title="过滤性"></a>过滤性</h3><p>  在1w条数据，满足</p>
+<ul>
+<li>a = 100的记录有1000条</li>
+<li>b = 10的记录有100条</li>
+<li><p>c = 1的记录有5条</p>
+<p>要将过滤性强的条件放前面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; c: 1, b: 1, a: 1 &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>使用B-tree的数据结构存储</p>
+</li>
+<li><p>建立索引的正确姿势：</p>
+<ol>
+<li>精确匹配</li>
+<li>排序条件</li>
+<li>范围匹配（正则表达，in, gte, lte）</li>
+</ol>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lpeihan.top/2017/09/04/mongodb索引/" data-id="cj76b1bfa00034gvjhm1idgy3" class="article-share-link">Share</a>
+      <a data-url="http://lpeihan.top/2017/09/04/mongodb索引/" data-id="cj76b1wqg0004ycvjmi5tc1ig" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
+
     </footer>
   </div>
   
@@ -117,7 +147,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
     </div>
   </div>
 
@@ -127,7 +157,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a>
+      <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a>
     </div>
   </div>
 
