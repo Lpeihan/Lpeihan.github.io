@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>&#39;闭包&#39; | Lpeihan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="闭包的定义和特性闭包是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。 闭包有下面三个特性：  函数嵌套函数。 函数内部可以引用外部的参数和变量 参数和变量不会被垃圾回收机制回收  下面看个例子： 1234567891011121314151617function f1() &amp;#123;  let i = 0;">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;闭包&#39;">
+<meta property="og:url" content="http://lpeihan.top/2017/09/04/闭包/index.html">
+<meta property="og:site_name" content="Lpeihan&#39;s blog">
+<meta property="og:description" content="闭包的定义和特性闭包是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。 闭包有下面三个特性：  函数嵌套函数。 函数内部可以引用外部的参数和变量 参数和变量不会被垃圾回收机制回收  下面看个例子： 1234567891011121314151617function f1() &amp;#123;  let i = 0;">
+<meta property="og:updated_time" content="2017-09-04T15:07:51.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;闭包&#39;">
+<meta name="twitter:description" content="闭包的定义和特性闭包是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。 闭包有下面三个特性：  函数嵌套函数。 函数内部可以引用外部的参数和变量 参数和变量不会被垃圾回收机制回收  下面看个例子： 1234567891011121314151617function f1() &amp;#123;  let i = 0;">
+  
+    <link rel="alternate" href="/atom.xml" title="Lpeihan&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lpeihan&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lpeihan.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/04/闭包/" class="article-date">
+  <time datetime="2017-09-04T15:07:13.000Z" itemprop="datePublished">2017-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      &#39;闭包&#39;
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="闭包的定义和特性"><a href="#闭包的定义和特性" class="headerlink" title="闭包的定义和特性"></a>闭包的定义和特性</h2><p><code>闭包</code>是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。</p>
+<p>闭包有下面三个特性：</p>
+<ol>
+<li>函数嵌套函数。</li>
+<li>函数内部可以引用外部的参数和变量</li>
+<li>参数和变量不会被垃圾回收机制回收</li>
+</ol>
+<p>下面看个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="keyword">const</span> f2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ++i;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> f2;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> fun = f1();</div><div class="line"></div><div class="line">fun(); <span class="comment">// 1</span></div><div class="line">fun(); <span class="comment">// 2</span></div><div class="line"></div><div class="line">fun = <span class="literal">null</span>; <span class="comment">// a 被回收</span></div></pre></td></tr></table></figure>
+<p>在上面这段代码中，<code>fun</code>一共运行了两次，第一次<code>1</code>，第二次<code>2</code>。这证明了函数<code>f1</code>中的局部变量<code>i</code>一直保存在内存中，并没有在<code>fun</code>调用后被自动清除。</p>
+<p>为什么会这样呢？原因就在于<code>f1</code>是<code>f2</code>的父函数，而<code>f2</code>被赋给了一个全局变量，这导致<code>f2</code>始终在内存中，而<code>f2</code>的存在依赖于<code>f1</code>，因此<code>f1</code>也始终在内存中，不会在调用结束后，被垃圾回收机制（<code>garbage collection</code>）回收。</p>
+<p>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题。在<code>IE</code>中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。</p>
+<p>接下来看一个经典的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);  </div><div class="line">  &#125;, <span class="number">1000</span> * i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 打印了5个5</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);  </div><div class="line">  &#125;, <span class="number">1000</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0 1 2 3 4</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(i);  </div><div class="line">    &#125;, <span class="number">1000</span> * i);</div><div class="line">  &#125;)(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0 1 2 3 4</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout((<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(i);</div><div class="line">    &#125;</div><div class="line">  &#125;)(i), i * <span class="number">1000</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面有几句话帮助理解闭包：</p>
+<ol>
+<li><p>闭包是一个有状态（不消失的私有数据）的函数</p>
+</li>
+<li><p>打破作用域规则的变量就是闭包</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lpeihan.top/2017/09/04/闭包/" data-id="cj76aw42x0002nwvjoxmi4c5i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/01/Promise/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Promise</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 10px;">javascript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/04/闭包/">&#39;闭包&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/01/Promise/">Promise</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/01/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 lpeihan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
